@@ -1,6 +1,6 @@
+import 'package:cyp/stage.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +36,7 @@ class _SplashScState extends State<SplashSc> {
 
     Future.delayed(const Duration(milliseconds: 3000),(){
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>
-      const HomePage()), (route) => false);
+      const Stage()), (route) => false);
     });
 
   }

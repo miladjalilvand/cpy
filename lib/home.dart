@@ -15,7 +15,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: SafeArea(child: NestedScrollView(headerSliverBuilder:
+      child: SafeArea (
+          child: NestedScrollView(headerSliverBuilder:
           (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           SliverAppBar(
@@ -67,3 +68,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
