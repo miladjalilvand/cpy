@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'apiList.dart';
+
 
 
 
@@ -13,6 +15,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
+    Color bg= Color(0xff0e1336);
+
     return DefaultTabController(
       length: 2,
       child: SafeArea (
@@ -20,20 +25,33 @@ class _HomePageState extends State<HomePage> {
           (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           SliverAppBar(
+            leading: IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),)
+            ,actions: [
+               IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),),
+            IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),)
+          ],
             flexibleSpace: FlexibleSpaceBar(background:
-            Container(height: 210,
+            Container(
               decoration: BoxDecoration(
-                  color: Colors.black
+                  color:bg,
               ),),
             ),
             pinned: true,
           ),
-          SliverAppBar(
-            flexibleSpace: FlexibleSpaceBar(background:
-            Container(height: 501,
-              decoration: BoxDecoration(
-                  color: Colors.redAccent
-              ),),
+          SliverAppBar(backgroundColor:bg,
+            expandedHeight: 150,
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.all(9.0),
+              child: FlexibleSpaceBar(
+
+                background:
+              Container(height: 501,
+                decoration: BoxDecoration(borderRadius: BorderRadius.all(
+                    Radius.circular(9)
+                ),
+                    color: Color(0xb5141b4d)
+                ),),
+              ),
             ),
             pinned: false,
           )
@@ -42,7 +60,7 @@ class _HomePageState extends State<HomePage> {
             flexibleSpace: FlexibleSpaceBar(background:
             Container(height: 210,
               decoration: BoxDecoration(
-                  color: Colors.black
+                  color: bg,
 
               ),child:  Padding(
                 padding: const EdgeInsets.only(left: 240.0),
@@ -59,7 +77,7 @@ class _HomePageState extends State<HomePage> {
 
       }, body :TabBarView(children: [
 
-        Icon(Icons.access_alarm_outlined),
+        GetCoins(),
         Icon(Icons.ac_unit_sharp)
 
       ],),

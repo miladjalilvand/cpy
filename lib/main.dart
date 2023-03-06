@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cyp/stage.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       title: 'Flutter Demo',
       theme: ThemeData(
 
@@ -21,7 +24,13 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.touch
+  };
+}
 
 class SplashSc extends StatefulWidget {
   const SplashSc({Key? key}) : super(key: key);
