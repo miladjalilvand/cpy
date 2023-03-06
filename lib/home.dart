@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    Color bg= Color(0xff0e1336);
+    Color bg= Color(0xff090c21);
 
     return DefaultTabController(
       length: 2,
