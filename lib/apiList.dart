@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter/cupertino.dart';
 
 class GetCoins extends StatefulWidget {
   const GetCoins({Key? key}) : super(key: key);
@@ -19,18 +18,20 @@ class _GetCoinsState extends State<GetCoins> {
   bool load = true ;
 
   getIc() async {
-    await http.get(Uri.parse('https://data.binance.com/api/v3/ticker/24hr'),
+    await http.get(Uri.parse('https://api.wazirx.com/sapi/v1/tickers/24hr'),
         // headers: <String, String>{
         //   'X-CoinAPI-Key':  '09CA207F-6947-4091-BAFA-BA5578A06B7A',
         //   'Accept':  'application/json',
         // },
 
     ).then((value) {
-      setState(() {
-        listJsonCoins = jsonDecode(value.body).toList();
-        load = false;
-      });
-      debugPrint(value.body);
+
+        setState(() {
+          listJsonCoins = jsonDecode(value.body).toList();
+          load = false;
+        });
+
+      debugPrint(value.statusCode.toString());
     });
 
   }
@@ -45,42 +46,53 @@ class _GetCoinsState extends State<GetCoins> {
 
   @override
   Widget build(BuildContext context) {
+
     if(!load){
 
     return ListView.builder(itemBuilder: (BuildContext context, int index) {
 
 
-        return ItemListCoins(sym: listJsonCoins[index]['symbol']);
+        return ItemListCoins(lis: listJsonCoins,ind: index,);
 
 
 
 });
   }else {
-      return Center(child: CircularProgressIndicator());
+      return Container(
+          color: const Color(0xff090c21),
+          child: const Center(child: CircularProgressIndicator()));
     }
   }
 }
 
 class ItemListCoins extends StatelessWidget {
-  final String sym ;
+  final List lis ;
+  final int ind ;
 
-  const ItemListCoins({Key? key, required this.sym}) : super(key: key);
+  const ItemListCoins({Key? key, required this.lis, required this.ind}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 120,
       width: double.infinity,
-      decoration: BoxDecoration(color:
+      decoration: const BoxDecoration(color:
         Color(0xff090c21),
 
     ),
-    child: Column(children: [
-      Row(children: [
-        Text(sym,style: TextStyle(color: Colors.white),)
+    child: Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          Text(lis[ind]['baseAsset'],style: const TextStyle(color: Colors.white),),
+          Text(lis[ind]['openPrice'],style: const TextStyle(color: Colors.white),),
 
-      ],)
-    ]),
+
+        ],)
+      ]),
+    ),
     );
   }
 }
