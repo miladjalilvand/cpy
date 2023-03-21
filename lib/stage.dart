@@ -13,14 +13,14 @@ class _StageState extends State<Stage> {
   int cI= 0;
 
   List wgs= [
-    HomePage()
+    const HomePage()
 
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(width:double.infinity ,height: 42,color:Color(0xff0e1336),child:
+      bottomNavigationBar: Container(width:double.infinity ,height: 42,color:const Color(0xff0e1336),child:
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -29,20 +29,20 @@ class _StageState extends State<Stage> {
             setState(() {
               cI = 0;
             });
-          }, icon: Icon(Icons.add_chart_rounded))
+          }, icon: const Icon(Icons.add_chart_rounded))
           ,  IconButton(onPressed: (){
 
             setState(() {
               cI = 0;
             });
-          }, icon: Icon(Icons.add_chart_rounded))
+          }, icon: const Icon(Icons.add_chart_rounded))
           ,
           IconButton(onPressed: (){
 
             setState(() {
               cI = 0;
             });
-          }, icon: Icon(Icons.add_chart_rounded))
+          }, icon: const Icon(Icons.add_chart_rounded))
           ,
 
 

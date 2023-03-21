@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    Color bg= Color(0xff090c21);
+    Color bg= const Color(0xff090c21);
 
     return DefaultTabController(
       length: 2,
@@ -25,10 +25,10 @@ class _HomePageState extends State<HomePage> {
           (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           SliverAppBar(
-            leading: IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),)
+            leading: IconButton(onPressed: () {  }, icon: const Icon(Icons.person_outline),)
             ,actions: [
-               IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),),
-            IconButton(onPressed: () {  }, icon: Icon(Icons.person_outline),)
+               IconButton(onPressed: () {  }, icon: const Icon(Icons.person_outline),),
+            IconButton(onPressed: () {  }, icon: const Icon(Icons.person_outline),)
           ],
             flexibleSpace: FlexibleSpaceBar(background:
             Container(
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
 
                 background:
               Container(height: 501,
-                decoration: BoxDecoration(borderRadius: BorderRadius.all(
+                decoration: const BoxDecoration(borderRadius: BorderRadius.all(
                     Radius.circular(9)
                 ),
                     color: Color(0xb5141b4d)
@@ -62,8 +62,8 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   color: bg,
 
-              ),child:  Padding(
-                padding: const EdgeInsets.only(left: 240.0),
+              ),child:  const Padding(
+                padding: EdgeInsets.only(left: 240.0),
                 child: TabBar(tabs: [
                     Icon(Icons.access_alarm_outlined),
                     Icon(Icons.ac_unit_sharp)
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
           )
         ];
 
-      }, body :TabBarView(children: [
+      }, body :const TabBarView(children: [
 
         GetCoins(),
         Icon(Icons.ac_unit_sharp)

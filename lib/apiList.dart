@@ -1,8 +1,7 @@
 import 'dart:convert';
-
+import 'package:cyp/graph.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 
 class GetCoins extends StatefulWidget {
   const GetCoins({Key? key}) : super(key: key);
@@ -51,11 +50,7 @@ class _GetCoinsState extends State<GetCoins> {
 
     return ListView.builder(itemBuilder: (BuildContext context, int index) {
 
-
-        return ItemListCoins(lis: listJsonCoins,ind: index,);
-
-
-
+      return ItemListCoins(lis: listJsonCoins,ind: index,);
 });
   }else {
       return Container(
@@ -73,26 +68,31 @@ class ItemListCoins extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      width: double.infinity,
-      decoration: const BoxDecoration(color:
-        Color(0xff090c21),
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+        Graph()));
+      },
+      child: Container(
+        height: 120,
+        width: double.infinity,
+        decoration: const BoxDecoration(color:
+          Color(0xff090c21),
 
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(6.0),
-      child: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-          Text(lis[ind]['baseAsset'],style: const TextStyle(color: Colors.white),),
-          Text(lis[ind]['openPrice'],style: const TextStyle(color: Colors.white),),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text(lis[ind]['baseAsset'],style: const TextStyle(color: Colors.white),),
+            Text(lis[ind]['openPrice'],style: const TextStyle(color: Colors.white),),
 
-
-        ],)
-      ]),
-    ),
+          ],)
+        ]),
+      ),
+      ),
     );
   }
 }
