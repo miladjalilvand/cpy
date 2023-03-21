@@ -1,6 +1,8 @@
 import 'dart:html' as html;
+import 'package:cyp/search.dart';
 import 'package:cyp/sign_uo.dart';
 import 'package:cyp/stage.dart';
+import 'package:cyp/timer.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Firebase Storage Demo',
-      home: SignupPage(),
+      home: TimerScreen(),
     );
   }
 }
