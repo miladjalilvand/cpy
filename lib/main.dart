@@ -1,4 +1,5 @@
 import 'dart:html' as html;
+import 'dart:ui';
 import 'package:cyp/search.dart';
 import 'package:cyp/sign_uo.dart';
 import 'package:cyp/stage.dart';
@@ -30,18 +31,28 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       title: 'Flutter Firebase Storage Demo',
-      home: SwipePage(),
+      scrollBehavior: CSC(),
+      home: const SwipePage(),
     );
   }
 }
+class CSC extends MaterialScrollBehavior {
 
+  @override
+  Set<PointerDeviceKind> get dragDevices =>{
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.touch,
+  };
+}
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
